@@ -1,0 +1,9 @@
+landingzone/.terraform.lock.hcl
+landingzone/.terraform/
+landingzone/terraform.tfstate
+landingzone/terraform.tfstate.backup
+.terraform.lock.hcl
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+
