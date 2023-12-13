@@ -1,11 +1,11 @@
-vpc_id                    = "vpc-03182af9613eca88f"
-private_subnet_ids        = ["subnet-08828872797a7d30d", "subnet-0685622351128d622"]
-control_plane_subnet_ids  = ["subnet-08828872797a7d30d", "subnet-0685622351128d622"]
+vpc_id                    = "vpc-0e835cbc74420b220"
+private_subnet_ids        = ["subnet-05c6d991e360d45f2", "subnet-0f5187b310c173ab0"]
+control_plane_subnet_ids  = ["subnet-05c6d991e360d45f2", "subnet-0f5187b310c173ab0"]
 cluster_name = "eks-cluster"
 cluster_version = "1.26"
 region = "us-west-2"
 # bastion host sg
-source_security_group_id  = ["sg-045fa16fae5f3786a"] # Don't forget to update bastion sg in main.tf line 170
+source_security_group_id  = ["sg-052c692daf41de614"] # Don't forget to update bastion sg in main.tf line 170
 added_auth_role           = "arn:aws:iam::391177159855:role/terraform-role"
 
 tags = {
@@ -15,32 +15,29 @@ tags = {
 }
 
 # bastion host sg
-cluster_additional_security_group_ids = ["sg-045fa16fae5f3786a"]
+cluster_additional_security_group_ids = ["sg-052c692daf41de614"]
 aws_auth_accounts                     = ["391177159855"]
 
 managed_node_groups = {
-    first_ng = {
-      node_group_name = "first_ng"
-      disk_size       = 50
-      instance_types  = ["t3.large"]
-      capacity_type   = "SPOT"
-      min_size        = 1
-      max_size        = 3
-      desired_size    = 1
-      subnet_ids      = ["subnet-08828872797a7d30d", "subnet-0685622351128d622"]
-    }
+  # first_ng = {
+  #   disk_size       = 50
+  #   instance_types  = ["t3.large"]
+  #   capacity_type   = "SPOT"
+  #   min_size        = 2
+  #   max_size        = 3
+  #   desired_size    = 2
+  #   subnet_ids      = ["subnet-05c6d991e360d45f2", "subnet-0f5187b310c173ab0"]
+  #   }
 
-managed_node_groups = {
-    first_ng = {
-      node_group_name = "second_ng"
-      disk_size       = 50
-      instance_types  = ["t3.large"]
-      capacity_type   = "SPOT"
-      min_size        = 3
-      max_size        = 5
-      desired_size    = 3
-      subnet_ids      = ["subnet-08828872797a7d30d", "subnet-0685622351128d622"]
-    }}
+  second_ng = {
+    disk_size       = 50
+    instance_types  = ["t3.medium"]
+    capacity_type   = "SPOT"
+    min_size        = 2
+    max_size        = 5
+    desired_size    = 2
+    subnet_ids      = ["subnet-05c6d991e360d45f2", "subnet-0f5187b310c173ab0"]
+    }
 
   }
 

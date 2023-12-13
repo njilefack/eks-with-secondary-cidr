@@ -123,6 +123,17 @@ locals {
       type        = "ingress"
       self        = true
     }
+
+    # istio webhook
+    ingress_istio_webhook = {
+      description = "Node to Cluster API for Istio Webhook"
+      protocol    = "-1"
+      from_port   = 0
+      to_port     = 0
+      type        = "ingress"
+      #cidr_blocks = ["0.0.0.0/0"]
+      source_cluster_security_group = true
+    }
   }
 
   node_security_group_recommended_rules = { for k, v in {

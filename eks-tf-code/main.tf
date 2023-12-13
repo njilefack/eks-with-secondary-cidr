@@ -167,7 +167,7 @@ resource "aws_security_group_rule" "cluster" {
   protocol = "tcp"
   from_port = 443
   to_port = 443
-  source_security_group_id = "sg-045fa16fae5f3786a" ## bastion sg
+  source_security_group_id = "sg-052c692daf41de614" ## bastion sg
 }
 
 ################################################################################
